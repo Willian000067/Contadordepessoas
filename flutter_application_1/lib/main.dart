@@ -41,6 +41,10 @@ class HomePage extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
+
+          // Para afastar o texto dos botoes, vou criar um widget entre os dois botoes.
+          const SizedBox(height: 32),
+
           const Text(
             '0',
             style: TextStyle(
@@ -48,12 +52,27 @@ class HomePage extends StatelessWidget {
               color: Colors.white,
             ),
           ),
+
+          // Para afastar o texto dos botoes, vou criar um widget entre os dois botoes.
+          const SizedBox(height: 32),
+
+          // Criando os Botoes
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextButton(
                 onPressed: decrement,
-                child: Text(
+                style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    // Serve para afastar o teste do botao em todos os lados.
+                    fixedSize: const Size(100, 100),
+                    // Para mudar a tonalidade de quando clica no botao
+                    primary: Colors.black,
+                    // mexer na borda do botao
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    )),
+                child: const Text(
                   'Saiu',
                   style: TextStyle(
                     color: Colors.black,
@@ -61,9 +80,23 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+
+              // Para afastar um botao do outro, vou criar um widget entre os dois botoes.
+              const SizedBox(width: 45),
+
               TextButton(
                 onPressed: increment,
-                child: Text(
+                style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    // Serve para afastar o teste do botao em todos os lados.
+                    fixedSize: const Size(100, 100),
+                    // Para mudar a tonalidade de quando clica no botao
+                    primary: Colors.black,
+                    // mexer na borda do botao
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    )),
+                child: const Text(
                   'Entrou',
                   style: TextStyle(
                     color: Colors.black,
