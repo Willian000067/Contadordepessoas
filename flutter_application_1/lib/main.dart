@@ -10,6 +10,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      // para tirar o tag de DEBUG do lado direito
+      debugShowCheckedModeBanner: false,
+
       home: HomePage(),
     );
   }
@@ -29,84 +32,92 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            'Pode Entrar!',
-            style: TextStyle(
-              fontSize: 30,
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-            ),
+      backgroundColor: Colors.white,
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/logo_restaurante.png'),
+            fit: BoxFit.cover,
           ),
-
-          // Para afastar o texto dos botoes, vou criar um widget entre os dois botoes.
-          const SizedBox(height: 32),
-
-          const Text(
-            '0',
-            style: TextStyle(
-              fontSize: 100,
-              color: Colors.white,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Pode Entrar!',
+              style: TextStyle(
+                fontSize: 30,
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+              ),
             ),
-          ),
 
-          // Para afastar o texto dos botoes, vou criar um widget entre os dois botoes.
-          const SizedBox(height: 32),
+            // Para afastar o texto dos botoes, vou criar um widget entre os dois botoes.
+            const SizedBox(height: 32),
 
-          // Criando os Botoes
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextButton(
-                onPressed: decrement,
-                style: TextButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    // Serve para afastar o teste do botao em todos os lados.
-                    fixedSize: const Size(100, 100),
-                    // Para mudar a tonalidade de quando clica no botao
-                    primary: Colors.black,
-                    // mexer na borda do botao
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    )),
-                child: const Text(
-                  'Saiu',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
+            const Text(
+              '0',
+              style: TextStyle(
+                fontSize: 100,
+                color: Colors.white,
+              ),
+            ),
+
+            // Para afastar o texto dos botoes, vou criar um widget entre os dois botoes.
+            const SizedBox(height: 32),
+
+            // Criando os Botoes
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                  onPressed: decrement,
+                  style: TextButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      // Serve para afastar o teste do botao em todos os lados.
+                      fixedSize: const Size(100, 100),
+                      // Para mudar a tonalidade de quando clica no botao
+                      primary: Colors.black,
+                      // mexer na borda do botao
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      )),
+                  child: const Text(
+                    'Saiu',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
-              ),
 
-              // Para afastar um botao do outro, vou criar um widget entre os dois botoes.
-              const SizedBox(width: 45),
+                // Para afastar um botao do outro, vou criar um widget entre os dois botoes.
+                const SizedBox(width: 45),
 
-              TextButton(
-                onPressed: increment,
-                style: TextButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    // Serve para afastar o teste do botao em todos os lados.
-                    fixedSize: const Size(100, 100),
-                    // Para mudar a tonalidade de quando clica no botao
-                    primary: Colors.black,
-                    // mexer na borda do botao
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    )),
-                child: const Text(
-                  'Entrou',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
+                TextButton(
+                  onPressed: increment,
+                  style: TextButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      // Serve para afastar o teste do botao em todos os lados.
+                      fixedSize: const Size(100, 100),
+                      // Para mudar a tonalidade de quando clica no botao
+                      primary: Colors.black,
+                      // mexer na borda do botao
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      )),
+                  child: const Text(
+                    'Entrou',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
