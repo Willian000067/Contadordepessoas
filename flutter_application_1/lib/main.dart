@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       // para tirar o tag de DEBUG do lado direito
       debugShowCheckedModeBanner: false,
 
@@ -18,15 +18,31 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  //codigo para fazer a contagem de aumentar e diminuir a contagem e pessoas.
+  int count = 0;
+
+  // Para diminuir os numeros da contagem de pessoas.
   void decrement() {
-    print('Decrement');
+    setState(() {
+      count--;
+    });
+    print(count);
   }
 
+  // Para aumentar os numeros da contagem de pessoas.
   void increment() {
-    print('Increment');
+    setState(() {
+      count++;
+    });
+    print(count);
   }
 
   @override
@@ -55,9 +71,9 @@ class HomePage extends StatelessWidget {
             // Para afastar o texto dos botoes, vou criar um widget entre os dois botoes.
             const SizedBox(height: 32),
 
-            const Text(
-              '0',
-              style: TextStyle(
+            Text(
+              count.toString(),
+              style: const TextStyle(
                 fontSize: 100,
                 color: Colors.white,
               ),
