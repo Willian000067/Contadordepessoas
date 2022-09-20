@@ -45,6 +45,10 @@ class _HomePageState extends State<HomePage> {
     print(count);
   }
 
+  // Codigo para analisar se esta totalmente vazio ou lotado o restaurante.
+  bool get isEmpty => count == 0;
+  bool get isFull => count == 20;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,11 +63,11 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'Pode Entrar!',
+            Text(
+              isFull ? 'Lotado' : 'Pode Entrar!',
               style: TextStyle(
                 fontSize: 30,
-                color: Colors.white,
+                color: isFull ? Colors.red : Colors.white,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -73,9 +77,9 @@ class _HomePageState extends State<HomePage> {
 
             Text(
               count.toString(),
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 100,
-                color: Colors.white,
+                color: isFull ? Colors.red : Colors.white,
               ),
             ),
 
@@ -87,9 +91,11 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: decrement,
+                  onPressed: isEmpty ? null : decrement,
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.white,
+                      backgroundColor: isEmpty
+                          ? Colors.white.withOpacity(0.5)
+                          : Colors.white,
                       // Serve para afastar o teste do botao em todos os lados.
                       fixedSize: const Size(100, 100),
                       // Para mudar a tonalidade de quando clica no botao
@@ -111,9 +117,10 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(width: 45),
 
                 TextButton(
-                  onPressed: increment,
+                  onPressed: isFull ? null : increment,
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.white,
+                      backgroundColor:
+                          isFull ? Colors.white.withOpacity(0.5) : Colors.white,
                       // Serve para afastar o teste do botao em todos os lados.
                       fixedSize: const Size(100, 100),
                       // Para mudar a tonalidade de quando clica no botao
